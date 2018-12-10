@@ -3,48 +3,55 @@ package model;
 import java.sql.Date;
 
 public class bills {
-	private int idbills;
-	private int id_customers;
-	private Date date_payment;
-	private float total_money;
+	
+	private int billID;
+	private int customerID;
+	private float totalMoney;
 	private String delivery;
-	private Date date_orders;
-	public int getIdbills() {
-		return idbills;
+	private Date dateOrders;
+	
+	public bills() {}
+
+	public int getBillID() {
+		return billID;
 	}
-	public void setIdbills(int idbills) {
-		this.idbills = idbills;
+
+	public void setBillID(int billID) {
+		this.billID = billID;
 	}
-	public int getId_customers() {
-		return id_customers;
+
+	public int getCustomerID() {
+		return customerID;
 	}
-	public void setId_customers(int id_customers) {
-		this.id_customers = id_customers;
+
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
-	public Date getDate_payment() {
-		return date_payment;
+
+	public float getTotalMoney() {
+		return totalMoney;
 	}
-	public void setDate_payment(Date date_payment) {
-		this.date_payment = date_payment;
+
+	public void setTotalMoney(float totalMoney) {
+		this.totalMoney = totalMoney;
 	}
-	public float getTotal_money() {
-		return total_money;
-	}
-	public void setTotal_money(float total_money) {
-		this.total_money = total_money;
-	}
+
 	public String getDelivery() {
 		return delivery;
 	}
+
 	public void setDelivery(String delivery) {
 		this.delivery = delivery;
 	}
-	public Date getDate_orders() {
-		return date_orders;
+
+	public Date getDateOrders() {
+		return dateOrders;
 	}
-	public void setDate_orders(Date date_orders) {
-		this.date_orders = date_orders;
+
+	public void setDateOrders(Date dateOrders) {
+		this.dateOrders = dateOrders;
 	}
+	
 	
 
 }
