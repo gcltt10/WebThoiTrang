@@ -60,6 +60,7 @@ public class QuanLyKhachHang_CTR extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String servletPath = request.getServletPath();
 		System.out.println(servletPath);
+		
 		if (servletPath.contains("/EditKhachHang")) {
 			String customerID = request.getParameter("txtCustomerID");
 			String customerName = request.getParameter("txtCustomerName");
@@ -95,6 +96,17 @@ public class QuanLyKhachHang_CTR extends HttpServlet {
 			
 			if(kq>0)
 				response.sendRedirect(request.getContextPath()+"/QuanLyKhachHang");	
+		}else if(servletPath.contains("/ThemKhachHang")) {
+			String customerID = request.getParameter("txtCustomerID");
+			String customerName = request.getParameter("txtCustomerName");
+			String customerEmail = request.getParameter("txtEmail");
+			String customerPhone = request.getParameter("txtPhone");
+			String customerBirthday = request.getParameter("txtBirthDay");
+			String customerAddress = request.getParameter("txtAddress");
+			String customerGioiTinh = request.getParameter("txtGioiTinh");
+			String customerUserName = request.getParameter("txtUserName");
+			String customerPassword = request.getParameter("txtPassword");
+			
 		}
 	}
 
