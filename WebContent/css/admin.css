@@ -1,0 +1,27 @@
+.mt-dashbroad {
+	margin-top:60px;
+	
+}
+
+.mh-dashbroad {
+	margin-left:-16px;
+	padding-right:-16px;
+	background-color:#F8F9FA;
+}
+.active {
+	background-color:#343a40 !important;
+	color:#ffffff !important;
+}
+.header {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+. form-exam {
+	overflow: scroll;
+}
+
+. congratulation{
+	width:300px;
+	height:200px;
+}
+
