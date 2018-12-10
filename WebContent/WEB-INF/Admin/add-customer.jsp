@@ -74,6 +74,7 @@
 								class="form-control" name="txtPassword" required>
 						</div>
 					</div>
+					<input type="hidden" name="txtStatus" value="user">
 					<button type="submit" class="btn btn-primary btn-lg btn-block">Đồng ý</button>
 					<a class="btn btn-secondary btn-block"
 						href="${pageContext.request.contextPath}/QuanLyKhachHang"

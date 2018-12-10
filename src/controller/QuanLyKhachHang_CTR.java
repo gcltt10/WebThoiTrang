@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.Customer_DAO;
 import model.customer;
+import model.useraccount;
 
 @WebServlet(urlPatterns = { "/QuanLyKhachHang", "/QuanLyKhachHang/ThemKhachHang", "/QuanLyKhachHang/EditKhachHang",
 		"/QuanLyKhachHang/XoaKhachHang" })
@@ -57,6 +58,7 @@ public class QuanLyKhachHang_CTR extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		request.setCharacterEncoding("UTF-8");
 		String servletPath = request.getServletPath();
 		System.out.println(servletPath);
@@ -87,16 +89,18 @@ public class QuanLyKhachHang_CTR extends HttpServlet {
 			ct.setPhone(customerPhone);
 			ct.setAddress(customerAddress);
 			ct.setSex(gioitinh);
-			ct.setUsername(customerUserName);
-			ct.setPassword(customerPassword);
 			ct.setBirthday(birthday);
 			
+			useraccount tk = new useraccount();
+			tk.setUsename(customerUserName);
+			tk.setPassword(customerPassword);
 			int kq = 0;
-			kq = Customer_DAO.UpdateKhachHang(ct);
+			kq = Customer_DAO.UpdateKhachHang(ct,tk);
 			
 			if(kq>0)
 				response.sendRedirect(request.getContextPath()+"/QuanLyKhachHang");	
 		}else if(servletPath.contains("/ThemKhachHang")) {
+			
 			String customerID = request.getParameter("txtCustomerID");
 			String customerName = request.getParameter("txtCustomerName");
 			String customerEmail = request.getParameter("txtEmail");
@@ -106,7 +110,34 @@ public class QuanLyKhachHang_CTR extends HttpServlet {
 			String customerGioiTinh = request.getParameter("txtGioiTinh");
 			String customerUserName = request.getParameter("txtUserName");
 			String customerPassword = request.getParameter("txtPassword");
+			String customerStatus = request.getParameter("txtStatus");
 			
+			java.sql.Date birthday = java.sql.Date.valueOf(customerBirthday);
+			Boolean gioitinh ;
+			if(customerGioiTinh.equals("1"))
+				gioitinh = true;
+			else
+				gioitinh=false;
+			
+			customer ct = new customer();
+			// 
+			ct.setIdcustomer(Integer.parseInt(customerID));
+			ct.setCustomer_name(customerName);
+			ct.setEmail(customerEmail);
+			ct.setPhone(customerPhone);
+			ct.setAddress(customerAddress);
+			ct.setSex(gioitinh);
+			ct.setBirthday(birthday);
+			//
+			useraccount tk = new useraccount();
+			tk.setUsename(customerUserName);
+			tk.setPassword(customerPassword);
+			tk.setStatus(customerStatus);
+			
+			int kq = 0;
+			kq = Customer_DAO.CreateKhachHang(ct, tk);
+			if(kq >0 )
+				response.sendRedirect(request.getContextPath()+"/QuanLyKhachHang");
 		}
 	}
 

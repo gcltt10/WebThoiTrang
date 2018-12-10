@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.customer;
+import model.useraccount;
 
 public class Customer_DAO {
 
@@ -15,6 +16,43 @@ public class Customer_DAO {
 
 	}
 
+	public static int CreateKhachHang(customer kh,useraccount tk) {
+		int kq= 0;
+		Connection cnn = DBConnect.getMySQLConnection();
+		try {
+			cnn.setAutoCommit(false);
+			CallableStatement cs = cnn.prepareCall("{ call ThemTaiKhoan(?,?,?,?,?,?,?,?,?,?) }");
+			cs.setInt(1, kh.getIdcustomer());
+			cs.setString(2, kh.getCustomer_name());
+			cs.setBoolean(3,kh.getSex());
+			cs.setDate(4, kh.getBirthday());
+			cs.setString(5, kh.getAddress());
+			cs.setString(6, kh.getPhone());
+			cs.setString(7, kh.getEmail());
+			cs.setString(8,tk.getUsename());
+			cs.setString(9, tk.getPassword());
+			cs.setString(10, tk.getStatus());
+			kq = cs.executeUpdate();
+			
+			if(kq == 0)
+				cnn.rollback();
+			else {
+				cnn.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (cnn != null) {
+				try {
+					cnn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return kq;
+	}
+	
 	public static int TaoCustomerID() {
 		int maxCustomerID = 0;
 		Connection cnn = DBConnect.getMySQLConnection();
@@ -30,7 +68,7 @@ public class Customer_DAO {
 		return maxCustomerID+1;
 	}
 	
-	public static int UpdateKhachHang(customer kh) {
+	public static int UpdateKhachHang(customer kh,useraccount tk) {
 		int kq = 0;
 		Connection cnn=DBConnect.getMySQLConnection();
 		try {
@@ -45,6 +83,12 @@ public class Customer_DAO {
 			cs.setString(6, kh.getEmail());
 			cs.setInt(7, kh.getIdcustomer());
 			kq=cs.executeUpdate();
+			
+			cs.clearParameters();
+			cs = cnn.prepareCall("update useraccount set password= ? where Username = ?");
+			cs.setString(1, tk.getPassword());
+			cs.setString(2, tk.getUsename());
+			kq = cs.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 			kq=0;
