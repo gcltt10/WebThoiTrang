@@ -49,12 +49,11 @@
 								</td>
 								
 								<td> <fmt:formatDate pattern="dd-MM-yyyy" value="${kh.birthday}" /></td>
-								<td>${kh.email }</td>
+								<td>${kh.email}</td>
 								<td>${kh.phone}</td>
-								<td><a href="${pageContext.request.contextPath}/QuanLyKhachHang/EditKhachHang?CustomerID=${kh.idcustomer}">
+								<td><a href="${pageContext.request.contextPath}/QuanLyDonHang/ChiTietDonHang?BillID=${kh.idcustomer}">
 									<i	class="fas fa-eye"></i></a></td>
-								<td><a href="#" onclick="btnXoa(${kh.idcustomer})"><i
-										class="fas fa-trash-alt"></i></a></td>
+								<td><a href="#" onclick="btnXoa(${kh.idcustomer})"><i class="fas fa-trash-alt"></i></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

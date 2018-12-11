@@ -6,11 +6,20 @@ public class bills {
 	
 	private int billID;
 	private int customerID;
+	private String customerName;
 	private float totalMoney;
 	private String delivery;
 	private Date dateOrders;
 	
 	public bills() {}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
 
 	public int getBillID() {
 		return billID;

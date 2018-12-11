@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,7 +16,7 @@ import model.customer;
 import model.useraccount;
 
 @WebServlet(urlPatterns = { "/QuanLyKhachHang", "/QuanLyKhachHang/ThemKhachHang", "/QuanLyKhachHang/EditKhachHang",
-		"/QuanLyKhachHang/XoaKhachHang" })
+		"/QuanLyKhachHang/XoaKhachHang","/QuanLyKhachHang/TimKiem"})
 public class QuanLyKhachHang_CTR extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -138,6 +139,11 @@ public class QuanLyKhachHang_CTR extends HttpServlet {
 			kq = Customer_DAO.CreateKhachHang(ct, tk);
 			if(kq >0 )
 				response.sendRedirect(request.getContextPath()+"/QuanLyKhachHang");
+		}else if(servletPath.contains("/TimKiem")) {
+			String name = request.getParameter("txtSearch");
+			ArrayList<customer> ls = Customer_DAO.SearchCustomerByName(name);
+			request.setAttribute("dsKhachHang", ls);
+			request.getRequestDispatcher("/WEB-INF/Admin/manager-customer.jsp").forward(request, response);
 		}
 	}
 
