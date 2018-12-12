@@ -1,10 +1,10 @@
 package model;
 
 public class category {
-	private long categoryID;
+	private int categoryID;
 	private String categoryName;
 	
-	public category(long categoryID, String categoryName) {
+	public category(int categoryID, String categoryName) {
 		super();
 		this.categoryID = categoryID;
 		this.categoryName = categoryName;
@@ -14,11 +14,11 @@ public class category {
 		// TODO Auto-generated constructor stub
 	}
 
-	public long getCategoryID() {
+	public int getCategoryID() {
 		return categoryID;
 	}
 
-	public void setCategoryID(long categoryID) {
+	public void setCategoryID(int categoryID) {
 		this.categoryID = categoryID;
 	}
 

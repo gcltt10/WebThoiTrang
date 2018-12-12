@@ -1,6 +1,8 @@
 package model;
 
 public class product {
+	
+	
 	private int idproduct;
 	private String product_name;
 	private String nsx;
@@ -10,6 +12,21 @@ public class product {
 	private float price;
 	private int id_category;
 	private int id_promotion;
+	private int discount;
+	private String img;
+	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public int getDiscount() {
+		return discount;
+	}
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
 	public int getIdproduct() {
 		return idproduct;
 	}
