@@ -5,6 +5,14 @@ public class MonHang {
 	private String tensp;
 	private float giasp;
 	private int soluong;
+	private String img;
+	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public int getMasp() {
 		return masp;
 	}
@@ -30,5 +38,8 @@ public class MonHang {
 		this.soluong = soluong;
 	}
 	
-	
+	public float thanhTien()
+	{
+		return giasp*soluong;
+	}
 }

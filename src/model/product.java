@@ -64,7 +64,7 @@ public class product {
 		this.material = material;
 	}
 	public float getPrice() {
-		return price;
+		return (this.price*(100-this.discount)/100);
 	}
 	public void setPrice(float price) {
 		this.price = price;
@@ -80,6 +80,9 @@ public class product {
 	}
 	public void setId_promotion(int id_promotion) {
 		this.id_promotion = id_promotion;
+	}
+	public float getOldPrice() {
+		return this.price;
 	}
 	
 }

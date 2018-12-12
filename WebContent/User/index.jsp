@@ -3,12 +3,12 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 
-<title>Shop Dương - Minh  - Thủy, khởi nguồn của sáng tạo</title>
+<title>Shop Dương - Minh - Thủy, khởi nguồn của sáng tạo</title>
 
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script><![endif]-->
 </head>
@@ -97,59 +97,80 @@
 							<div class="row">
 								<%
 									ArrayList<product> ls1 = Product_DAO.LoadDanhSachSanPhamGiaGia(1, 4);
-									for(product sp : ls1){
+									for (product sp : ls1) {
 								%>
-								<div class="col-md-3 col-sm-6">
-									<div class="products">
-										<div class="offer">-<%=sp.getDiscount()%>%</div>
-										<div class="thumbnail">
-											<a href="details.html"><img
-												src="images/products/small/<%=sp.getImg() %>"
-												alt="Product Name"></a>
-										</div>
-										<div class="productname"><%=sp.getProduct_name() %></div>
-										<h4 class="price"> <fmt:formatNumber type="number" maxIntegerDigits="10" value="<%=sp.getPrice()%>" /> VNĐ</h4>
-										<div class="button_group">
-											<button class="button add-cart" type="button">Add To
-												Cart</button>
+								<form action="${pageContext.request.contextPath}/GioHang"
+									method="post">
+									<div class="col-md-3 col-sm-6">
+										<div class="products">
+											<div class="offer">
+												-<%=sp.getDiscount()%>%
+											</div>
+											<div class="thumbnail">
+												<a href="${pageContext.request.contextPath}/ChiTietSanPham?id=<%=sp.getIdproduct()%>"><img
+													src="images/products/small/<%=sp.getImg()%>"
+													alt="Product Name"></a>
+											</div>
+											<div class="productname"><%=sp.getProduct_name()%></div>
+											<h4 class="price">
+												<fmt:formatNumber type="number" maxIntegerDigits="10"
+													value="<%=sp.getPrice()%>" />
+												VNĐ
+											</h4>
+											<div class="button_group">
+												<input type="submit" class="button add-cart"
+													value="Thêm vào giỏ">
+											</div>
 										</div>
 									</div>
-								</div>
-							<%
+									<input type="hidden" value="<%=sp.getIdproduct()%>" name="txtProductID">
+									<input type="hidden" value="1" name="soluong">
+								</form>
+								<%
 									}
-							%>
+								%>
 							</div>
 						</li>
 						<li>
 							<div class="row">
-									<%
+								<%
 									ArrayList<product> ls2 = Product_DAO.LoadDanhSachSanPhamGiaGia(2, 4);
-									for(product sp : ls2){
+									for (product sp : ls2) {
 								%>
-								<div class="col-md-3 col-sm-6">
-									<div class="products">
-										<div class="offer">-<%=sp.getDiscount()%>%</div>
-										<div class="thumbnail">
-											<a href="details.html"><img
-												src="images/products/small/<%=sp.getImg() %>"
-												alt="Product Name"></a>
-										</div>
-										<div class="productname"><%=sp.getProduct_name() %></div>
-										<h4 class="price"> <fmt:formatNumber type="number" maxIntegerDigits="10" value="<%=sp.getPrice()%>" /> VNĐ</h4>
-										<div class="button_group">
-											<button class="button add-cart" type="button">Add To
-												Cart</button>
+								<form action="${pageContext.request.contextPath}/GioHang"
+									method="post">
+									<div class="col-md-3 col-sm-6">
+										<div class="products">
+											<div class="offer">
+												-<%=sp.getDiscount()%>%
+											</div>
+											<div class="thumbnail">
+												<a href="${pageContext.request.contextPath}/ChiTietSanPham?id=<%=sp.getIdproduct()%>"><img
+													src="images/products/small/<%=sp.getImg()%>"
+													alt="Product Name"></a>
+											</div>
+											<div class="productname"><%=sp.getProduct_name()%></div>
+											<h4 class="price">
+												<fmt:formatNumber type="number" maxIntegerDigits="10"
+													value="<%=sp.getPrice()%>" />
+												VNĐ
+											</h4>
+											<div class="button_group">
+												<input type="submit" class="button add-cart" value="Thêm vào giỏ">
+											</div>
 										</div>
 									</div>
-								</div>
-							<%
+									<input type="hidden" value="<%=sp.getIdproduct()%>" name="txtProductID">
+									<input type="hidden" value="1" name="soluong">
+								</form>
+								<%
 									}
-							%>
+								%>
 							</div>
 						</li>
 					</ul>
 				</div>
-				
+
 				<div class="clearfix"></div>
 				<div class="our-brand">
 					<h3 class="title">
@@ -225,15 +246,7 @@
 		<div class="clearfix"></div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
-	
-	<!-- Bootstrap core JavaScript==================================================-->
-	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/jquery.sequence-min.js"></script>
-	<script type="text/javascript"
-		src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
-	<script defer src="js/jquery.flexslider.js"></script>
-	<script type="text/javascript" src="js/script.min.js"></script>
+
+
 </body>
 </html>
